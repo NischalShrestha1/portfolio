@@ -1,33 +1,17 @@
+
 export default function Home() {
   return (
-    <section className="max-w-3xl mx-auto mt-16">
-      
-      {/* Image + Name */}
-      <div className="flex items-center justify-center gap-6 mb-8">
-        <img
-          src="/1751001706914.jpeg"
-          alt="Nischal Shrestha"
-          className="w-32 h-32 rounded-full object-cover"
-        />
-
-        <h1 className="text-4xl font-bold">
-          Hi! I'm Nischal Shrestha
-        </h1>
-      </div>
-
-      {/* Content */}
-      <div className="text-center">
-        <h2 className="text-3xl font-bold mb-4">
-          Welcome to My Portfolio
-        </h2>
-
-        <p className="text-lg text-gray-600">
+    <section className="max-w-5xl mx-auto px-4 mt-50">
+      <h1 className="text-5xl font-bold  ">
+        Hi! <span className="text-cyan-300">I'm Nischal Shrestha</span>
+      </h1>
+      <div className="text-center md:text-left">
+        <p className="text-lg text-white w-half mx-auto md:mx-0 mt-4 w-150">
           A web developer specializing in creating beautiful and functional
-          websites. Explore my projects and skills to learn more about what I can do.
+          websites. Explore my projects and skills to learn more about what I
+          can do.
         </p>
       </div>
-
     </section>
   );
 }
-

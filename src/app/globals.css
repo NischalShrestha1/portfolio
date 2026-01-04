@@ -1,26 +1,205 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Mac Taskbar Styles */
+.mac-taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 58px;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px) saturate(100%);
+    border-top: 1px solid rgba(255, 255, 255, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    z-index: 9999;
+    -webkit-app-region: drag;
+}
+
+.mac-taskbar-left,
+.mac-taskbar-right {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    -webkit-app-region: no-drag;
+}
+
+.mac-taskbar-left {
+    left: 20px;
+}
+
+.mac-taskbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    -webkit-app-region: no-drag;
+}
+
+.mac-taskbar-right {
+    right: 20px;
+}
+
+.mac-dock {
+    display: flex;
+    gap: 4px;
+    padding: 6px 8px;
+    background: rgba(100, 100, 100, 0.3);
+    border-radius: 14px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mac-dock-item {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    overflow: visible;
+    background: transparent;
+}
+
+.mac-dock-item:hover {
+    transform: scale(1.5) translateY(-8px);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.mac-dock-item::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0);
+    border-radius: 50%;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mac-dock-item:hover::before {
+    width: 60px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    bottom: -12px;
+}
+
+.mac-dock-label {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.95);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.mac-dock-item:hover .mac-dock-label {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-2px);
+}
+
+/* Add padding to body to account for fixed footer */
+body {
+    padding-bottom: 58px;
+}
+
+/* Custom scrollbar for popup */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #4a4a4a, #2a2a2a);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #5a5a5a, #3a3a3a);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Ensure main content doesn't overlap with fixed footer */
+main {
+  padding-bottom: 20px;
+}
+
+/* Aesthetic popup enhancements */
+.aesthetic-glow {
+  box-shadow: 
+    0 0 30px rgba(0, 0, 0, 0.8),
+    0 0 60px rgba(0, 0, 0, 0.5),
+    0 0 90px rgba(0, 0, 0, 0.3),
+    inset 0 0 30px rgba(255, 255, 255, 0.03),
+    0 0 120px rgba(139, 92, 246, 0.1);
+}
+
+.aesthetic-border {
+  position: relative;
+}
+
+.aesthetic-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, #0f0f0f, #1a1a1a, #0f0f0f, #1a1a1a);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.9;
+}
+
+.dark-popup {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
 }
